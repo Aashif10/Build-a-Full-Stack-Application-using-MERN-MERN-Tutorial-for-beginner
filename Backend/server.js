@@ -14,7 +14,9 @@ app.get("/", (req, res) => {
 
 app.use("/user",userRoute)
 
+
 connectDB();
+
 app.listen(PORT, err => {
   if (err) console.log(err);
   console.log(`Server running at http://localhost:${PORT}`);

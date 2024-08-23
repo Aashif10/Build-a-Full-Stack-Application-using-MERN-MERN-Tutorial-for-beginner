@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -6,25 +6,32 @@ const All = () => {
   let [data, setData] = useState([]);
   let [error, setError] = useState("");
 
-    let getData = async () => {
-      const res = await fetch("http://localhost:5500/user/fetch");
-      const result = await res.json();
+  let getData = async () => {
+    const res = await fetch("http://localhost:5500/user/fetch");
+    const result = await res.json();
 
-      if (!res.ok) {
-        console.log(result.error);
-        setError(result.error);
-      }
-      if (res.ok) {
-        setData(result);
-      }
-    };
-    
+    if (!res.ok) {
+      console.log(result.error);
+      setError(result.error);
+    }
+    if (res.ok) {
+      setData(result);
+      // setError("Add User Successfully!")
+    }
+  };
 
   useEffect(() => {
-  getData()
-},[])
+    getData();
+  }, []);
+  setTimeout(() => {
+    getData();
+  }, 2000);
+  setTimeout(() => {
+    setError(" ");
+  }, 5000);
 
   console.log(data);
+
   const deleteData = async id => {
     try {
       const response = await axios.delete(
@@ -36,24 +43,20 @@ const All = () => {
     }
   };
 
-  setTimeout(() => {
-    getData();
-  }, 1000);
-  setTimeout(() => {
-    setError("");
-  }, 7000);
-
   return (
     <div className="content">
       <h1>All Data</h1>
-      {error && <div className="error">{error}</div>}
+      {error &&
+        <div className="error">
+          {error}
+        </div>}
       <div className="bigContainer">
         {data.map(post => {
           {
             /* const { _id, name, email, phone } = post; */
           }
           return (
-            <div key={post._id} className="container">
+            <div key={post._id} className="container" id="allpost">
               <h2>
                 {post.name}
               </h2>
@@ -63,7 +66,8 @@ const All = () => {
               <h3>
                 {post.phone}
               </h3>
-              <a className="link"
+              <a
+                className="link"
                 href="#"
                 onClick={() => {
                   deleteData(post._id);
@@ -71,7 +75,9 @@ const All = () => {
               >
                 Delete
               </a>
-              <Link to={`/${post._id}`} className="link">Edit</Link>
+              <Link to={`/${post._id}`} className="link">
+                Edit
+              </Link>
             </div>
           );
         })}

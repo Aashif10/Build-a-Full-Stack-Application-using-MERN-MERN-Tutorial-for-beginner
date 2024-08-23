@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import "../App.css"
 const Create = () => {
   let [name, setname] = useState("");
   let [email, setemail] = useState("");
@@ -10,7 +11,7 @@ const Create = () => {
 
 
   console.log(name, email, phone);
-  let handlesubmit = async e => {
+  let handlesubmit = async (e) => {
     e.preventDefault();
     const adduser = { name, email, phone };
     const response = await fetch("http://localhost:5500/user/create", {
@@ -22,12 +23,12 @@ const Create = () => {
     });
     const result = await response.json();
     if (!response.ok) {
-      setError("Something went Wrong!");
+      setError("Duplicate Error!");
       
       console.log(result.error);
     }
     if (response.ok) {
-      setError("Add User successfully!");
+      setError("");
       setemail("");
       setname("");
       setphone("");
@@ -37,7 +38,7 @@ const Create = () => {
     }
   };
   setTimeout(() => {
-  setError("")
+    setError("")
 },4000)
 
   useEffect(() => {
@@ -46,7 +47,12 @@ const Create = () => {
 
   return <div>
       <h1 className="heading">Enter Data</h1>
-      {error && <div className="error">{error}</div>}
+      {error && <div className="error">
+          {error}
+        </div>}
+    
+  
+
       <div className="container1">
         <form onSubmit={handlesubmit} method="POst">
           <div class="form-group">

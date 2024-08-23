@@ -37,14 +37,14 @@ font-size: 1vmax;
     height: 300px;
 }
 .error{
-    background-color:rgb(237, 12, 12);
+    /* background-color:rgb(246, 114, 114); */
     font-size: 1.2rem;
     padding: 0.2rem;
-    color: white;
+    color:red;
     /* width: fit-content; */
     text-align: center;
 }
-.sucess{
+.success{
     background-color: green;
     color: white;
     text-align: center;
@@ -147,3 +147,97 @@ button:hover{
     color: deeppink;
 
 }
+
+@media (max-width:355px) {
+    .navbar span{
+        font-size: 1rem;
+        color: blue;
+        text-align: center;
+    }
+    .navbar a{
+        font-size: 1rem;
+        text-align: center;
+
+    }
+    
+}
+@media (max-width:770px) {
+   .container1{
+    /* background-color: green; */
+    width: 100%;
+   
+   }
+   .heading{
+    font-size: 2rem;
+   }
+    .container1 input,label{
+        width: auto;
+        
+    position: relative;
+    right: 2rem;
+    }
+    .container1{
+        width: 100%;
+    }
+   
+}
+@media (max-width:440px) 
+{
+       .container1 input{
+        position: relative;
+        right: 8rem;
+       }  
+       .container1{
+        width: 500px;
+       }  
+       .navbar{
+        width: 500px;
+       }
+       .navbar a ,span
+       .heading{
+        text-align: center;
+       }
+}
+@media (max-width:360px) {
+    .navbar a,span{
+        font-size: 1.5rem;
+        margin-left: 20px;
+
+    }
+    .heading{
+        margin-left: 7rem;
+    }
+    .form-group input,label{
+        line-height: 4rem;
+    }
+}
+@media (max-width:520px) {
+    #allpost{
+        width:200px;
+    }
+    
+}
+@media (max-width:466px) {
+    #allpost{
+        width:180px;
+    }
+    
+}
+@media (max-width:438px) {
+    #allpost{
+        /* background-color: green; */
+        width:160px;
+    }
+    .navbar{
+        font-size: 2vmax;
+    }
+    
+}
+@media (max-width:348px) {
+   #allpost{
+    width: 100%;
+   }
+    
+}
+
+
